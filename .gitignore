@@ -12,4 +12,6 @@ cdk.out
 # pycharm specifics
 .idea/
 .env/
+DynamoDB/
+cdk.context.json
 
