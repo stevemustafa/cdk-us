@@ -42,3 +42,12 @@ class UrlShortenerStack(core.Stack):
 
         # add the environment variable for the function to consume
         function.add_environment("TABLE_NAME", table.table_name)
+
+
+        # create the API Gateway
+        '''
+        v0.4
+        The following is the entirety of the construct of creating the API Gateway and having it front the previously 
+        created lambda function
+        '''
+        api = aws_apigateway.LambdaRestApi(self, 'api', handler=function)
