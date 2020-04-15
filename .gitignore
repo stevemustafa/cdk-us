@@ -14,5 +14,6 @@ cdk.out
 .env/
 DynamoDB/
 cdk.context.json
+cloudformation/
 
 cloudformation/
