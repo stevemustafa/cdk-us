@@ -28,20 +28,3 @@ class UrlShortenerStack(core.Stack):
                                        handler='handler.main',
                                        code=aws_lambda.Code.asset('./lambda'))
 
-        '''
-        The following creates the tie in between the lambda function and the dynamodb table by granting read and write 
-        permissions to the function on the table itself
-        this also involves injecting environment variables
-        '''
-        # create the tie in between the lambda function and the DynamoDB table
-        table.grant_read_write_data(function)
-
-        # add the environment variable for the function to consume
-        function.add_environment("TABLE_NAME", table.table_name)
-
-        # create the API Gateway
-        '''
-        The following is the entirety of the construct of creating the API Gateway and having it front the previously 
-        created lambda function
-        '''
-        api = aws_apigateway.LambdaRestApi(self, 'api', handler = function)
